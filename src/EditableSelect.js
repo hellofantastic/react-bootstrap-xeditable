@@ -71,9 +71,9 @@ export default class EditableSelect extends React.Component {
   }
   
   componentWillReceiveProps(props) {
-     if (this.state.options !== props.options) {
-          this.state.options = this.convertOptions(props.options);
-        }
+    if (this.state.options !== props.options) {
+      this.state.options = this.convertOptions(props.options);
+    }
   }
 
   render() {
