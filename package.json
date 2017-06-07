@@ -1,11 +1,10 @@
 {
-  "name": "react-bootstrap-xeditable",
+  "name": "react-bootstrap-xeditable-loom",
   "version": "0.2.10",
   "description": "",
   "main": "lib/index.js",
   "module": "es/index.js",
   "jsnext:main": "es/index.js",
-  "typings": "d.ts/index.d.ts",
   "scripts": {
     "start": "./node_modules/.bin/webpack-dev-server --inline --progress --port 8080",
     "build:commonjs": "./node_modules/.bin/rimraf lib && ./node_modules/.bin/cross-env BABEL_ENV=commonjs ./node_modules/.bin/babel src --out-dir lib",
@@ -24,14 +23,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kunyan/react-bootstrap-xeditable.git"
+    "url": "git+https://github.com/hellofantastic/react-bootstrap-xeditable-loom.git"
   },
-  "author": "Kun Yan <kyan@redhat.com>",
+  "author": "Dallas <dallas@thegalacticdesignbureau.com>",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/kunyan/react-bootstrap-xeditable/issues"
+    "url": "https://github.com/hellofantastic/react-bootstrap-xeditable-loom/issues"
   },
-  "homepage": "https://github.com/kunyan/react-bootstrap-xeditable#readme",
+  "homepage": "https://github.com/hellofantastic/react-bootstrap-xeditable-loom#readme",
   "devDependencies": {
     "ava": "^0.19.1",
     "babel-cli": "^6.24.1",
