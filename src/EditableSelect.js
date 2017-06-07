@@ -42,6 +42,7 @@ export default class EditableSelect extends React.Component {
       isEditing: false,
     });
     this.setLinkText(text);
+    this.props.onChange(this.refs.el.value);
   }
   cancel = () => {
     this.setState({isEditing: false});
@@ -67,6 +68,12 @@ export default class EditableSelect extends React.Component {
       }
       return {text: opt.text, value: opt.value};
     });
+  }
+  
+  componentWillReceiveProps(props) {
+     if (this.state.options !== props.options) {
+          this.state.options = this.convertOptions(props.options);
+        }
   }
 
   render() {
