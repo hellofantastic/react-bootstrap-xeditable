@@ -75,7 +75,8 @@ import {EditableSelect} from 'react-bootstrap-xeditable';
 | select2| :thought_balloon: | &nbsp; |
 
 ## TypeScript:
-d.ts already intergrated. just import it.
+No.
+See [kunyan/react-bootstrap-xeditable](https://github.com/kunyan/react-bootstrap-xeditable) for a Typescript integrated version.
 
 ## Known Issues:
 
