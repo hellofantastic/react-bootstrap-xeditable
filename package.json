@@ -18,8 +18,7 @@
     "dist",
     "lib",
     "es",
-    "src",
-    "d.ts"
+    "src"
   ],
   "repository": {
     "type": "git",

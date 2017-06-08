@@ -26,7 +26,8 @@ export default class EditableTextField extends React.Component {
     this.props.onUpdate(this.props.name, this.refs.el.value);
     this.setState({isEditing: false, value: this.refs.el.value});
     //Added to support updating QueryBuilder callback...
-    this.props.onChange(this.refs.el.value);
+    if(this.props.onChange)
+      this.props.onChange(this.refs.el.value);
   }
   cancel = () => {
     this.setState({isEditing: false});
