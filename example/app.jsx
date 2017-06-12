@@ -5,6 +5,7 @@ import {EditableTextField, EditableSelect, EditableTextArea} from '../src/index'
 const XTextField = class XTextField extends React.Component {
   constructor(props) {
     super(props);
+    alert('hey');
     this.state = {
       value: 'superuser'
     };
