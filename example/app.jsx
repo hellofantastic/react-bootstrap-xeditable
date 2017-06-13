@@ -8,8 +8,9 @@ const XTextField = class XTextField extends React.Component {
     this.state = {
       value: 'superuser'
     };
-    this.setState = this.setState.bind(this);
+    this.stState = this.setState.bind(this);
   }
+  
   handleUpdate = (name, value) => {
     this.setState({value: value});
     alert('Value Changed:' + value);
@@ -33,8 +34,7 @@ const XSelect = class XSelect extends React.Component {
   }
   render() {
     const options2 = [
-      'Hello', 'World', 'Sky', 'Air',
-      // 'UK',
+      'Hello', 'World', 'Sky', 'Air'
     ];
     return (<EditableSelect name='country' onUpdate={this.handleUpdate} value={this.state.value} options={options2}/>);
   }

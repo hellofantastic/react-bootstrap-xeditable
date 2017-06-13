@@ -42,7 +42,8 @@ export default class EditableSelect extends React.Component {
       isEditing: false,
     });
     this.setLinkText(text);
-    this.props.onChange(this.refs.el.value);
+    if(this.props.onChange)
+      this.props.onChange(this.refs.el.value);
   }
   cancel = () => {
     this.setState({isEditing: false});
