@@ -65,9 +65,9 @@ export default class EditableSelect extends React.Component {
     }
     return options.map((opt) => {
       if (typeof opt === 'string' || typeof opt === 'number' || typeof opt === 'boolean') {
-        return {text: opt, value: opt};
+        return {label: opt, value: opt};
       }
-      return {text: opt.text, value: opt.value};
+      return {label: opt.label, value: opt.value};
     });
   }
   
@@ -80,7 +80,7 @@ export default class EditableSelect extends React.Component {
   render() {
     if (this.state.isEditing) {
       const options = this.state.options && this.state.options.map((opt, i) => {
-        return <option key={i} value={opt.value}>{opt.text}</option>;
+        return <option key={i} value={opt.value}>{opt.label}</option>;
       });
       const selectClassName = `form-control input-sm ${this.props.className}`;
       return (

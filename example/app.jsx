@@ -5,7 +5,6 @@ import {EditableTextField, EditableSelect, EditableTextArea} from '../src/index'
 const XTextField = class XTextField extends React.Component {
   constructor(props) {
     super(props);
-    alert('hey');
     this.state = {
       value: 'superuser'
     };
@@ -56,16 +55,16 @@ const XSelect2 = class XSelect extends React.Component {
   render() {
     const options = [
       {
-        text: 'China',
+        label: 'China',
         value: 'CN'
       }, {
-        text: 'India',
+        label: 'India',
         value: 'IN'
       }, {
-        text: 'United Kingdom (UK)',
+        label: 'United Kingdom (UK)',
         value: 'UK'
       }, {
-        text: 'United States of America (USA)',
+        label: 'United States of America (USA)',
         value: 'USA'
       }
     ];
