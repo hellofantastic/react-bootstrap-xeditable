@@ -30,7 +30,7 @@ export default class EditableSelect extends React.Component {
         return opt;
       }
     });
-    this.setLinkText(selected && selected.text);
+    this.setLinkText(selected && selected.label);
 
   }
 
