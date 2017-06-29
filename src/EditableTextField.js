@@ -41,7 +41,7 @@ class EditableTextField extends React.Component {
     this.refs.el.focus();
   }
   handleClickOutside = (evt) => { 
-    console.log('Click ouside',evt);
+    //console.log('Click ouside',evt);
     if(evt.srcElement.className === 'editable-clear-x')
       evt.srcElement.click();
     else if(evt.srcElement.className === '' && this.state.isEditing === true)  
