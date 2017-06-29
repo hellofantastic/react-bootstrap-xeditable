@@ -6,7 +6,8 @@ import EditableTextField from '../src/EditableTextField';
 
 test('render EditableTextField and click', t => {
   const wrapper = shallow(<EditableTextField name="test" onUpdate={() => {}}/>);
-  t.is(wrapper.find('a.editable').length, 1);
-  wrapper.find('a.editable').simulate('click');
-  t.is(wrapper.find('input').length, 1);
+  const child = shallow(wrapper.get(0));
+  t.is(child.find('a.editable').length, 1);
+  child.find('a.editable').simulate('click');
+  t.is(child.find('input').length, 1);
 });
