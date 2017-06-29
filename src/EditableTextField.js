@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import XEditable from './XEditable';
+import onClickOutside from 'react-onclickoutside';
 
-export default class EditableTextField extends React.Component {
+class EditableTextField extends React.Component {
   static propTypes = {
     id: PropTypes.string,
     name: PropTypes.string,
@@ -22,7 +23,10 @@ export default class EditableTextField extends React.Component {
     this.setState = this.setState.bind(this);
   }
   save = (event) => {
-    event.preventDefault();
+    if(event)
+      event.preventDefault();
+      //console.log('event', event.target);
+    
     this.props.onUpdate(this.props.name, this.refs.el.value);
     this.setState({isEditing: false, value: this.refs.el.value});
     //Added to support updating QueryBuilder callback...
@@ -36,6 +40,13 @@ export default class EditableTextField extends React.Component {
     this.refs.el.value = '';
     this.refs.el.focus();
   }
+  handleClickOutside = (evt) => { 
+    console.log('Click ouside',evt);
+    if(evt.srcElement.className === 'editable-clear-x')
+      evt.srcElement.click();
+    else if(evt.srcElement.className === '' && this.state.isEditing === true)  
+      this.save();
+  }
   handleLinkClick = () => {
     this.setState({isEditing: true});
   }
@@ -43,9 +54,9 @@ export default class EditableTextField extends React.Component {
     if (this.state.isEditing) {
       const inputClassName = `form-control input-sm ${this.props.className}`;
       return (
-        <XEditable isLoading={false} save={this.save} cancel={this.cancel}>
+        <XEditable isLoading={false} save={this.save} cancel={this.cancel} showButtons={this.props.showButtons}>
           <input ref='el' id={this.props.id} type='text' className={inputClassName}  name={this.props.name} defaultValue={this.props.value} placeholder={this.props.placeholder} autoFocus/>
-          <span className='editable-clear-x' onClick={this.clear}></span>
+          <span  className='editable-clear-x' onClick={this.clear}></span>
         </XEditable>
       );
     } else {
@@ -57,3 +68,4 @@ export default class EditableTextField extends React.Component {
     }
   }
 }
+export default onClickOutside(EditableTextField);

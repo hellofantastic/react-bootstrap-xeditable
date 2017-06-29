@@ -6,18 +6,30 @@ const XTextField = class XTextField extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: 'superuser'
+      value: 'superuser',
+      value2: 'punk'
     };
     this.stState = this.setState.bind(this);
   }
   
   handleUpdate = (name, value) => {
-    this.setState({value: value});
-    alert('Value Changed:' + value);
+    if(name === 'test')
+      this.setState({value: value});
+    if(name === 'test2')
+      this.setState({value2: value}); 
+    //alert('Value Changed:' + value);
   }
   render() {
-    return (<EditableTextField name='test' value={this.state.value} onUpdate={this.handleUpdate} placeholder='Please input your name'/>);
+    
+    return (
+      <div>
+        <EditableTextField  name='test' value={this.state.value} onUpdate={this.handleUpdate} placeholder='Please input your name' showButtons={false}/>
+        
+        <EditableTextField name='test2' value={this.state.value2} onUpdate={this.handleUpdate} placeholder='Please input your name' showButtons={false}/>
+      </div>  
+    ); 
   }
+
 };
 
 const XSelect = class XSelect extends React.Component {
@@ -69,7 +81,7 @@ const XSelect2 = class XSelect extends React.Component {
       }
     ];
     const defaultText = <span className="glyphicon glyphicon-pencil"/>;
-    return (<EditableSelect name='country' onUpdate={this.handleUpdate} value={this.state.value} options={options} defaultText={defaultText}/>);
+    return (<EditableSelect name='country' onUpdate={this.handleUpdate} value={this.state.value} options={options} defaultText={defaultText} showButtons={false}/>);
   }
 };
 

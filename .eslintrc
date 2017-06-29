@@ -17,6 +17,7 @@
         "react"
     ],
     "rules": {
+        "no-console":0,
         "indent": [
             "warn",
             2
@@ -33,6 +34,6 @@
             "warn",
             "always"
         ],
-        "react/jsx-uses-vars": "error",
+        "react/jsx-uses-vars": "error"
     }
 }

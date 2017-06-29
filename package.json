@@ -72,5 +72,8 @@
       "babel-register"
     ],
     "babel": "inherit"
+  },
+  "dependencies": {
+    "react-onclickoutside": "^6.1.1"
   }
 }

@@ -78,14 +78,16 @@ export default class EditableSelect extends React.Component {
   }
 
   render() {
+    
     if (this.state.isEditing) {
+      const {showButtons} = this.props; 
       const options = this.state.options && this.state.options.map((opt, i) => {
         return <option key={i} value={opt.value}>{opt.label}</option>;
       });
       const selectClassName = `form-control input-sm ${this.props.className}`;
       return (
-        <XEditable isLoading={false} save={this.save} cancel={this.cancel}>
-          <select ref='el' className={selectClassName} id={this.props.id} name={this.props.name} defaultValue={this.state.value}>
+        <XEditable isLoading={false} save={this.save} cancel={this.cancel} showButtons={this.props.showButtons} >
+          <select ref='el' className={selectClassName} id={this.props.id} name={this.props.name} onChange={ showButtons === false ?  this.save : null} defaultValue={this.state.value}>
             {options}
           </select>
         </XEditable>

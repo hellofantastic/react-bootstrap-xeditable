@@ -3,10 +3,12 @@ import PropTypes from 'prop-types';
 
 export default class XEditable extends React.Component {
   static defaultProps = {
-    isLoading: false
+    isLoading: false,
+    showButtons: true
   };
   static propTypes = {
-    isLoading: PropTypes.bool
+    isLoading: PropTypes.bool,
+    showButtons: PropTypes.bool
   };
 
   constructor(props) {
@@ -29,14 +31,17 @@ export default class XEditable extends React.Component {
                     }}>
                       {this.props.children}
                     </div>
-                    <div className='editable-buttons'>
-                      <button type='submit' className='btn btn-primary btn-sm editable-submit' onClick={this.props.save}>
-                        <i className='glyphicon glyphicon-ok'></i>
-                      </button>
-                      <button type='button' className='btn btn-default btn-sm editable-cancel' onClick={this.props.cancel}>
-                        <i className='glyphicon glyphicon-remove'></i>
-                      </button>
-                    </div>
+                    { this.props.showButtons != false ?
+                      <div className='editable-buttons'>
+                        <button type='submit' className='btn btn-primary btn-sm editable-submit' onClick={this.props.save}>
+                          <i className='glyphicon glyphicon-ok'></i>
+                        </button>
+                        <button type='button' className='btn btn-default btn-sm editable-cancel' onClick={this.props.cancel}>
+                          <i className='glyphicon glyphicon-remove'></i>
+                        </button>
+                      </div>
+                      : null
+                    }
                   </div>
                   <div className='editable-error-block help-block'></div>
                 </div>
