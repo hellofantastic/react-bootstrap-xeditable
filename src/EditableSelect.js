@@ -35,6 +35,7 @@ export default class EditableSelect extends React.Component {
   }
 
   save = (event) => {
+  
     event.preventDefault();
     this.props.onUpdate(this.refs.el.name, this.refs.el.value);
     const text = this.refs.el.options && this.refs.el.options[this.refs.el.selectedIndex] && this.refs.el.options[this.refs.el.selectedIndex].label;
@@ -71,6 +72,7 @@ export default class EditableSelect extends React.Component {
     });
   }
   
+  
   componentWillReceiveProps(props) {
     if (this.state.options !== props.options) {
       this.state.options = this.convertOptions(props.options);
@@ -87,7 +89,7 @@ export default class EditableSelect extends React.Component {
       const selectClassName = `form-control input-sm ${this.props.className}`;
       return (
         <XEditable isLoading={false} save={this.save} cancel={this.cancel} showButtons={this.props.showButtons} >
-          <select ref='el' className={selectClassName} id={this.props.id} name={this.props.name} onChange={ showButtons === false ?  this.save : null} defaultValue={this.state.value}>
+          <select autoFocus ref='el' onBlur={this.save} className={selectClassName} id={this.props.id} name={this.props.name} onChange={ showButtons === false ?  this.save : null} defaultValue={this.state.value}>
             {options}
           </select>
         </XEditable>

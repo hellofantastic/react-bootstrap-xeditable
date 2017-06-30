@@ -23,15 +23,17 @@ class EditableTextField extends React.Component {
     this.setState = this.setState.bind(this);
   }
   save = (event) => {
+   
+    let value = this.refs.el.value;
+    
     if(event)
       event.preventDefault();
-      //console.log('event', event.target);
-    
+      
     this.props.onUpdate(this.props.name, this.refs.el.value);
     this.setState({isEditing: false, value: this.refs.el.value});
     //Added to support updating QueryBuilder callback...
     if(this.props.onChange)
-      this.props.onChange(this.refs.el.value);
+      this.props.onChange(value);
   }
   cancel = () => {
     this.setState({isEditing: false});
@@ -44,8 +46,8 @@ class EditableTextField extends React.Component {
     //console.log('Click ouside',evt);
     if(evt.srcElement.className === 'editable-clear-x')
       evt.srcElement.click();
-    else if(evt.srcElement.className === '' && this.state.isEditing === true)  
-      this.save();
+    else if(evt.srcElement.nodeName !== 'INPUT' && this.state.isEditing === true)  
+      this.save(evt);
   }
   handleLinkClick = () => {
     this.setState({isEditing: true});
