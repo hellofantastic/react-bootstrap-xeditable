@@ -35,6 +35,7 @@ export default class EditableSelect extends React.Component {
   }
 
   save = (event) => {
+    
     let name = this.refs.el.name;
     let value = this.refs.el.value;
     event.preventDefault();

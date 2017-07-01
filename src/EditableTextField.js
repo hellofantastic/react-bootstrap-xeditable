@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import XEditable from './XEditable';
-import onClickOutside from 'react-onclickoutside';
+//import onClickOutside from 'react-onclickoutside';
 
 class EditableTextField extends React.Component {
   static propTypes = {
@@ -43,11 +43,13 @@ class EditableTextField extends React.Component {
     this.refs.el.focus();
   }
   handleClickOutside = (evt) => { 
+    console.log('onClickOutside Evt',evt);
     let saveEvt = evt;
     if(evt.srcElement.className === 'editable-clear-x')
       evt.srcElement.click();
     else if(evt.srcElement.nodeName !== 'INPUT' && this.state.isEditing === true)  
       this.save(saveEvt);
+    else return;  
   }
   handleLinkClick = () => {
     this.setState({isEditing: true});
@@ -70,4 +72,4 @@ class EditableTextField extends React.Component {
     }
   }
 }
-export default onClickOutside(EditableTextField);
+export default EditableTextField;
