@@ -43,11 +43,11 @@ class EditableTextField extends React.Component {
     this.refs.el.focus();
   }
   handleClickOutside = (evt) => { 
-    //console.log('Click ouside',evt);
+    let saveEvt = evt;
     if(evt.srcElement.className === 'editable-clear-x')
       evt.srcElement.click();
     else if(evt.srcElement.nodeName !== 'INPUT' && this.state.isEditing === true)  
-      this.save(evt);
+      this.save(saveEvt);
   }
   handleLinkClick = () => {
     this.setState({isEditing: true});

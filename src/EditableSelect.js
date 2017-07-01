@@ -35,9 +35,10 @@ export default class EditableSelect extends React.Component {
   }
 
   save = (event) => {
-  
+    let name = this.refs.el.name;
+    let value = this.refs.el.value;
     event.preventDefault();
-    this.props.onUpdate(this.refs.el.name, this.refs.el.value);
+    this.props.onUpdate(name, value);
     const text = this.refs.el.options && this.refs.el.options[this.refs.el.selectedIndex] && this.refs.el.options[this.refs.el.selectedIndex].label;
     this.setState({
       isEditing: false,
