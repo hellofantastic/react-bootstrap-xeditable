@@ -17,7 +17,7 @@ class EditableTextField extends React.Component {
     super(props);
     this.state = {
       isEditing: false,
-      value: this.props.value,
+      value: this.props.value, //this could be removed
       defaultText: this.props.defaultText || 'Empty',
     };
     this.setState = this.setState.bind(this);

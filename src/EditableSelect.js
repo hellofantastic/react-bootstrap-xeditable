@@ -36,17 +36,22 @@ export default class EditableSelect extends React.Component {
 
   save = (event) => {
     
-    let name = this.refs.el.name;
-    let value = this.refs.el.value;
     event.preventDefault();
-    this.props.onUpdate(name, value);
+   
+    this.props.onUpdate(this.refs.el.name, this.refs.el.value);
+    
+    if(this.props.onChange)
+      this.props.onChange(this.refs.el.value);
+
     const text = this.refs.el.options && this.refs.el.options[this.refs.el.selectedIndex] && this.refs.el.options[this.refs.el.selectedIndex].label;
+    
     this.setState({
       isEditing: false,
     });
+
     this.setLinkText(text);
-    if(this.props.onChange)
-      this.props.onChange(this.refs.el.value);
+
+    
   }
   cancel = () => {
     this.setState({isEditing: false});
@@ -76,9 +81,7 @@ export default class EditableSelect extends React.Component {
   
   
   componentWillReceiveProps(props) {
-    if (this.state.options !== props.options) {
-      this.state.options = this.convertOptions(props.options);
-    }
+    this.state.options = this.convertOptions(props.options);
   }
 
   render() {
@@ -86,12 +89,13 @@ export default class EditableSelect extends React.Component {
     if (this.state.isEditing) {
       const {showButtons} = this.props; 
       const options = this.state.options && this.state.options.map((opt, i) => {
-        return <option key={i} value={opt.value}>{opt.label}</option>;
+         
+        return <option  key={i}  value={opt.value}>{opt.label}</option>;
       });
       const selectClassName = `form-control input-sm ${this.props.className}`;
       return (
         <XEditable isLoading={false} save={this.save} cancel={this.cancel} showButtons={this.props.showButtons} >
-          <select autoFocus ref='el' onBlur={this.save} className={selectClassName} id={this.props.id} name={this.props.name} onChange={ showButtons === false ?  this.save : null} defaultValue={this.state.value}>
+          <select  autoFocus ref='el' onBlur={this.save} className={selectClassName} id={this.props.id} name={this.props.name} onChange={ showButtons === false ?  this.save : null} defaultValue={this.props.value}>
             {options}
           </select>
         </XEditable>

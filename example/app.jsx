@@ -7,7 +7,7 @@ const XTextField = class XTextField extends React.Component {
     super(props);
     this.state = {
       value: 'superuser',
-      value2: 'punk'
+      value2: 'another textfield'
     };
     this.stState = this.setState.bind(this);
   }
